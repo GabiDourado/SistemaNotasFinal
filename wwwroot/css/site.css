@@ -14,5 +14,18 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background-color: #E7EFEE;
+}
+
+.img-logo{
+    width: 6.5%;
+    padding:0;
+}
+header a img {
+    width: 100%;
+}
+nav {
+    padding: 0;
+    background-color: #9DD799;
 }
