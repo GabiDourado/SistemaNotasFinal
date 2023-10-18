@@ -15,7 +15,8 @@ html {
 
 body {
     margin-bottom: 60px;
-    background-color: #F2F2F2;
+    font-family: 'Varela Round', sans-serif;
+    background-color: #F8FEFF;
 }
 
 .img-logo{
@@ -38,4 +39,42 @@ nav a {
 }
 nav div ul{
     margin: 0 auto;
+}
+/*Página inicial*/
+.caixa-inicial a {
+    display: block;
+    font-size: 1rem;
+    color: #06919B;
+}
+.caixa-inicial span{
+    font-size: 1.3rem;
+}
+.caixa-inicial {
+    border: solid 5px #06919B;
+    border-radius: 2rem;
+    margin-bottom: 2rem;
+    padding: 2rem;
+    text-align:center;
+}
+.caixa-maior1{
+    width:30%;
+}
+.caixa-maior2 {
+    width: 30%;
+}
+.caixona{
+    margin-top: 1rem;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+}
+.text-center{
+    margin-bottom: 3rem;
+}
+/*rodapé*/
+footer span{
+    padding-left: 2rem;
+}
+footer {
+    border-top: solid 1px #06919B;
 }
