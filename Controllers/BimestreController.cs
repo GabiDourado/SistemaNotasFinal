@@ -19,11 +19,23 @@ namespace SistemaNotasFinal.Controllers
         }
 
         // GET: Bimestre
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string pesquisa)
         {
-              return _context.Bimestre != null ? 
+            if (string.IsNullOrWhiteSpace(pesquisa))
+            {
+                return _context.Bimestre != null ?
                           View(await _context.Bimestre.ToListAsync()) :
                           Problem("Entity set 'Contexto.Bimestre'  is null.");
+            }
+            else
+            {
+                var Bimestre =
+                    _context.Bimestre
+                    .Where(x => x.BimestreDescricao.Contains(pesquisa))
+                    .OrderBy(x => x.BimestreDescricao);
+                return View(Bimestre);
+            }
+
         }
 
         // GET: Bimestre/Details/5

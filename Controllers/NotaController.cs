@@ -19,12 +19,33 @@ namespace SistemaNotasFinal.Controllers
         }
 
         // GET: Nota
-        public async Task<IActionResult> Index()
-        {
-            var contexto = _context.Nota.Include(n => n.Aluno).Include(n => n.Bimestre).Include(n => n.Materia);
-            return View(await contexto.ToListAsync());
-        }
 
+        public async Task<IActionResult> Index(string pesquisa)
+        {
+            if (pesquisa == null)
+            {
+                return _context.Nota
+                            .Include(n => n.Aluno)
+                            .Include(n => n.Bimestre)
+                            .Include(n => n.Materia) != null ?
+                          View(await _context.Nota.Include(n => n.Aluno)
+                            .Include(n => n.Bimestre)
+                            .Include(n => n.Materia).ToListAsync()) :
+                          Problem("Entity set 'Contexto.Nota'  is null.");
+            }
+            else
+            {
+                var Aluno =
+                    _context.Nota
+                    .Include(x=> x.Aluno)
+                    .Include(n => n.Bimestre)
+                    .Include(n => n.Materia)
+                    .Where(x => x.Aluno.NomeAluno.Contains(pesquisa))
+                    .OrderBy(x => x.AlunoId);
+
+                return View(Aluno);
+            }
+        }
         // GET: Nota/Details/5
         public async Task<IActionResult> Details(int? id)
         {
