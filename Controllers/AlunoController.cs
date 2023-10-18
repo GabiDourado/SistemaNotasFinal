@@ -19,12 +19,26 @@ namespace SistemaNotasFinal.Controllers
         }
 
         // GET: Aluno
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string pesquisa)
         {
-              return _context.Aluno != null ? 
+            if (string.IsNullOrWhiteSpace(pesquisa))
+            {
+                return _context.Aluno != null ?
                           View(await _context.Aluno.ToListAsync()) :
                           Problem("Entity set 'Contexto.Aluno'  is null.");
+            }
+            else
+            {
+
+                var aluno =
+                    _context.Aluno
+                    .Where(x => x.NomeAluno.Contains(pesquisa))
+                    .OrderBy(x => x.NomeAluno);
+                return View(aluno);
+            }
+
         }
+
 
         // GET: Aluno/Details/5
         public async Task<IActionResult> Details(int? id)

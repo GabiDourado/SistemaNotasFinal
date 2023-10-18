@@ -19,10 +19,24 @@ namespace SistemaNotasFinal.Controllers
         }
 
         // GET: Professor
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string pesquisa)
         {
-            var contexto = _context.Professor.Include(p => p.Materia);
-            return View(await contexto.ToListAsync());
+            if (string.IsNullOrWhiteSpace(pesquisa))
+            {
+                return _context.Professor != null ?
+                          View(await _context.Professor.ToListAsync()) :
+                          Problem("Entity set 'Contexto.Professor'  is null.");
+            }
+            else
+            {
+           
+                var professors =
+                    _context.Professor
+                    .Where(x => x.NomeProfessor.Contains(pesquisa))
+                    .OrderBy(x => x.NomeProfessor);
+                return View(professors);
+            }
+            
         }
 
         // GET: Professor/Details/5
