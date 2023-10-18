@@ -19,12 +19,30 @@ namespace SistemaNotasFinal.Controllers
         }
 
         // GET: Materia
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string pesquisa)
+        {
+            if (pesquisa == null)
+            {
+                return _context.Materia != null ?
+                          View(await _context.Materia.ToListAsync()) :
+                          Problem("Entity set 'Contexto.Materia'  is null.");
+            }
+            else
+            {
+                var materia =
+                    _context.Materia
+                    .Where(x => x.MateriaNome.Contains(pesquisa))
+                    .OrderBy(x => x.MateriaNome);
+
+                return View(materia);
+            }
+        }
+       /* public async Task<IActionResult> Index()
         {
               return _context.Materia != null ? 
                           View(await _context.Materia.ToListAsync()) :
                           Problem("Entity set 'Contexto.Materia'  is null.");
-        }
+        }*/
 
         // GET: Materia/Details/5
         public async Task<IActionResult> Details(int? id)

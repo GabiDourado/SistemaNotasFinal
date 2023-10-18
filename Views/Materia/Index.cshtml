@@ -1,4 +1,7 @@
-﻿@model IEnumerable<SistemaNotasFinal.Models.Materia>
+﻿<head>
+    <link rel="stylesheet" href="~/css/Materia.css" asp-append-version="true" />
+</head>
+@model IEnumerable<SistemaNotasFinal.Models.Materia>
 
 @{
     ViewData["Title"] = "Index";
@@ -9,6 +12,15 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+<div>
+    @using (Html.BeginForm("Index", "Materia", FormMethod.Get))
+    {
+        <p>
+            Digite aqui sua pesquisa: @Html.TextBox("Pesquisa")
+            <input type="submit" value="Pesquisar" />
+        </p>
+    }
+</div>
 <table class="table">
     <thead>
         <tr>
