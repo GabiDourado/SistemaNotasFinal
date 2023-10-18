@@ -15,7 +15,7 @@ html {
 
 body {
     margin-bottom: 60px;
-    background-color: #E7EFEE;
+    background-color: #F2F2F2;
 }
 
 .img-logo{
@@ -27,5 +27,15 @@ header a img {
 }
 nav {
     padding: 0;
-    background-color: #9DD799;
+    background-color: #06919B;
+}
+nav a {
+    color: white;
+    text-decoration: none;
+    padding-right: 3rem;
+    padding-left: 3rem;
+    font-size: 1.3rem;
+}
+nav div ul{
+    margin: 0 auto;
 }
