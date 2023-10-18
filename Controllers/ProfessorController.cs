@@ -23,8 +23,9 @@ namespace SistemaNotasFinal.Controllers
         {
             if (string.IsNullOrWhiteSpace(pesquisa))
             {
-                return _context.Professor != null ?
-                          View(await _context.Professor.ToListAsync()) :
+                return _context.Professor
+                          .Include(n => n.Materia) != null ?
+                          View(await _context.Professor.Include(n => n.Materia).ToListAsync()) :
                           Problem("Entity set 'Contexto.Professor'  is null.");
             }
             else
@@ -32,6 +33,7 @@ namespace SistemaNotasFinal.Controllers
            
                 var professors =
                     _context.Professor
+                    .Include(n => n.Materia)
                     .Where(x => x.NomeProfessor.Contains(pesquisa))
                     .OrderBy(x => x.NomeProfessor);
                 return View(professors);
