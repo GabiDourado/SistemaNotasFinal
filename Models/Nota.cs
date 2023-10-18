@@ -32,5 +32,10 @@ namespace SistemaNotasFinal.Models
         [Column("Nota2")]
         [Display(Name = "Segunda Nota do Aluno")]
         public double Notas2 { get; set; }
+
+        [NotMapped]
+        public double Media { get { return (Notas1+Notas2) / 2; } }
+
     }
 }
+

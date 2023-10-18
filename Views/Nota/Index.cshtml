@@ -36,26 +36,32 @@
             <th>
                 @Html.DisplayNameFor(model => model.Notas2)
             </th>
+            <th>
+                Média
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
-        <tr>
+        <tr class="notas">
             <td>
-                    @Html.DisplayFor(modelItem => item.Aluno.NomeAluno)
+                @Html.DisplayFor(modelItem => item.Aluno.NomeAluno)
             </td>
             <td>
-                    @Html.DisplayFor(modelItem => item.Materia.MateriaNome)
+                @Html.DisplayFor(modelItem => item.Materia.MateriaNome)
             </td>
             <td>
-                    @Html.DisplayFor(modelItem => item.Bimestre.BimestreDescricao)
+                @Html.DisplayFor(modelItem => item.Bimestre.BimestreDescricao)
             </td>
-            <td>
+            <td class="nota01">
                 @Html.DisplayFor(modelItem => item.Notas1)
             </td>
-            <td>
+            <td class="nota02">
                 @Html.DisplayFor(modelItem => item.Notas2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Media)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
