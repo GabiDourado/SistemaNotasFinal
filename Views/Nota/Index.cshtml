@@ -6,9 +6,10 @@
 
 <h1>Notas</h1>
 
-<p>
-    <a asp-action="Create">Adicionar nova nota</a>
-</p>
+@using (Html.BeginForm("Create", "Nota", FormMethod.Get))
+{
+    <button>Cadastrar novo Nota</button>
+}
 <div>
     @using (Html.BeginForm("Index", "Nota", FormMethod.Get))
     {
