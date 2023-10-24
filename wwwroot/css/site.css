@@ -78,3 +78,25 @@ footer span{
 footer {
     border-top: solid 1px #06919B;
 }
+input{
+    border-radius: 0.5rem;
+}
+input[type="submit"] {
+    background-color: #06919B;
+    color: white;
+    border-color: #06919B;
+}
+a{
+    text-decoration: none;
+    color: dimgrey;
+}
+a:hover {
+        color: #0AE3F2 !important;
+}
+button {
+    background-color: #06919B;
+    color: white;
+    border-radius: 0.5rem;
+    border-color: #06919B;
+    margin-bottom: 0.5rem;
+}
