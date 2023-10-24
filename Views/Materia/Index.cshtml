@@ -9,9 +9,11 @@
 
 <h1>Matérias</h1>
 
-<p>
-    <a asp-action="Create">Adicionar nova materia</a>
-</p>
+
+@using (Html.BeginForm("Create", "Materia", FormMethod.Get))
+{
+    <button>Adicionar nova materia</button>
+}
 <div>
     @using (Html.BeginForm("Index", "Materia", FormMethod.Get))
     {

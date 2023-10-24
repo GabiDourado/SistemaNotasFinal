@@ -6,9 +6,10 @@
 
 <h1>Bimestres</h1>
 
-<p>
-    <a asp-action="Create">Cadastrar novo Bimestre</a>
-</p>
+@using (Html.BeginForm("Create", "Bimestre", FormMethod.Get))
+{
+    <button>Cadastrar novo Bimestre</button>
+}
 <div>
     @using (Html.BeginForm("Index", "Bimestre", FormMethod.Get))
     {
